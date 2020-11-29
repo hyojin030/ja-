@@ -91,7 +91,7 @@
                     <tbody>
                         <tr th:each="element : ${elements}">
                             <td th:text="${element.id}">id</td>
-                            <td th:text="${element.region}">지역</td>
+                            <td> <a th:text="${element.region}" th:href="@{/education/form(id=${element.id})}">지역</a></td>
                             <td th:text="${element.orz}">학교명</td>
                             <td th:text="${element.work}">사업명</td>
                             <td th:text="${element.class_num}">학급수</td>

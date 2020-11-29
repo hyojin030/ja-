@@ -71,7 +71,7 @@
             <p>유아 데이터</p>
             <div class="container">
                 <form action="#" th:action="@{/education/form}" th:object="${element}" method="post">
-
+                    <input type="hidden" th:field="*{id}">
                     <div class="form-group">
                         <label for="region">지역</label>
                         <input type="text" class="form-control" id="region" th:field="*{region}">
