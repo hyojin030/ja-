@@ -1,7 +1,8 @@
 package com.ja.jademo.controller;
 
 import com.ja.jademo.model.Element;
-import com.ja.jademo.repository.ElementRepository;
+import com.ja.jademo.model.Middle;
+import com.ja.jademo.repository.MiddleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,27 +12,27 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/education")
-public class ElementController {
+public class MiddleController {
     @Autowired
-    private ElementRepository elementRepository;
+    private MiddleRepository middleRepository;
 
-    @GetMapping("/elementary")
+    @GetMapping("/middle")
     public String education(Model model, @RequestParam(required=false) Long id){
-        List<Element> elements = elementRepository.findAll();
-        model.addAttribute("elements", elements);
+        List<Middle> middles = middleRepository.findAll();
+        model.addAttribute("middles", middles);
         if (id == null) {
-            model.addAttribute("element", new Element());
+            model.addAttribute("middle", new Middle());
         } else {
-            Element element = elementRepository.findById(id).orElse(null);
-            model.addAttribute("element", element);
+            Middle middle = middleRepository.findById(id).orElse(null);
+            model.addAttribute("middle", middle);
         }
-        return "education/elementary";
+        return "education/middle";
     }
 
-    @PostMapping("/elementary")
-    public String greetingSubmit(@ModelAttribute Element element){
-        elementRepository.save(element);
-        return "redirect:/education/elementary";
+    @PostMapping("/middle")
+    public String greetingSubmit(@ModelAttribute Middle middle){
+        middleRepository.save(middle);
+        return "redirect:/education/middle";
     }
 
 /*    @GetMapping("/form")

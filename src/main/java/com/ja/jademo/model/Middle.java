@@ -6,8 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name="info_elem")
-public class Element {
+@Table(name="info_mid")
+public class Middle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,5 +20,4 @@ public class Element {
     private int volunteer;
     private int semester;
     private String inout2;
-
 }

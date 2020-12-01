@@ -44,18 +44,16 @@
 </nav>
 </header>
 <main role="main" class="container">
-    <br>
-    <br>
-    <br>
+    <br><br><br>
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link active" data-toggle="tab" href="#a1">유아</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#a2">초등</a>
+            <a class="nav-link" th:href="@{/education/elementary}">초등</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#a3">중등</a>
+            <a class="nav-link" th:href="@{/education/middle}">중등</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#a4">고등</a>
@@ -69,48 +67,10 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade show active" id="a1">
-            <div class="table-responsive">
-                <foam>
-                    <a type="button" class="btn btn-primary" th:href="@{/education/form}">추가</a>
-                    <a type="button" class="btn btn-primary" th:href="@{/education/form}">수정</a>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">지역</th>
-                        <th scope="col">학교명</th>
-                        <th scope="col">사업명</th>
-                        <th scope="col">기관별 총 학급수</th>
-                        <th scope="col">기관별 총 학생수</th>
-                        <th scope="col">기관별 총 교육시간</th>
-                        <th scope="col">기관별 총 봉사자수</th>
-                        <th scope="col">진행학기</th>
-                        <th scope="col">안/밖</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="element : ${elements}">
-                            <td th:text="${element.id}">id</td>
-                            <td> <a th:text="${element.region}" th:href="@{/education/form(id=${element.id})}">지역</a></td>
-                            <td th:text="${element.orz}">학교명</td>
-                            <td th:text="${element.work}">사업명</td>
-                            <td th:text="${element.class_num}">학급수</td>
-                            <td th:text="${element.student}">학생수</td>
-                            <td th:text="${element.edu_hour}">교육시간</td>
-                            <td th:text="${element.volunteer}">봉사자수</td>
-                            <td th:text="${element.semester}">진행학기</td>
-                            <td th:text="${element.inout2}">안/밖</td>
-                        </tr>
-                    </tbody>
-                </table>
-                </foam>
-            </div>
         </div>
-        <div class="tab-pane fade" id="a2">
-            <p>초등 데이터</p>
+        <div class="tab-pane fade" >
         </div>
-        <div class="tab-pane fade" id="a3">
-            <p>Curabitur dignissim quis nunc vitae laoreet. Etiam ut mattis leo, vel fermentum tellus. Sed sagittis rhoncus venenatis. Quisque commodo consectetur faucibus. Aenean eget ultricies justo.</p>
+        <div class="tab-pane fade">
         </div>
         <div class="tab-pane fade" id="a4">
             <p>Curabitur dignissim quis nunc vitae laoreet. Etiam ut mattis leo, vel fermentum tellus. Sed sagittis rhoncus venenatis. Quisque commodo consectetur faucibus. Aenean eget ultricies justo.</p>

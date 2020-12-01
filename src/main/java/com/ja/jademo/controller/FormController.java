@@ -1,3 +1,4 @@
+
 package com.ja.jademo.controller;
 
 import com.ja.jademo.model.Element;
@@ -11,24 +12,22 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/education")
-public class ElementController {
+public class FormController {
     @Autowired
     private ElementRepository elementRepository;
 
-    @GetMapping("/elementary")
-    public String education(Model model, @RequestParam(required=false) Long id){
-        List<Element> elements = elementRepository.findAll();
-        model.addAttribute("elements", elements);
+    @GetMapping("/form")
+    public String form(Model model, @RequestParam(required=false) Long id){
         if (id == null) {
             model.addAttribute("element", new Element());
         } else {
             Element element = elementRepository.findById(id).orElse(null);
             model.addAttribute("element", element);
         }
-        return "education/elementary";
+        return "education/form";
     }
 
-    @PostMapping("/elementary")
+    @PostMapping("/form")
     public String greetingSubmit(@ModelAttribute Element element){
         elementRepository.save(element);
         return "redirect:/education/elementary";
