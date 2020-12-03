@@ -42,47 +42,38 @@
         </ul>
     </div>
 </nav>
-</header>
 <main role="main" class="container">
-    <br><br><br>
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#a1">유아</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/education/elementary}">초등</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/education/middle}">중등</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/education/high}">고등</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/education/univ}">대학</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#a6">성인</a>
-        </li>
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane fade show active" id="a1">
-        </div>
-        <div class="tab-pane fade" >
-        </div>
-        <div class="tab-pane fade">
-        </div>
-        <div class="tab-pane fade" id="a4">
-            <p>Curabitur dignissim quis nunc vitae laoreet. Etiam ut mattis leo, vel fermentum tellus. Sed sagittis rhoncus venenatis. Quisque commodo consectetur faucibus. Aenean eget ultricies justo.</p>
-        </div>
-        <div class="tab-pane fade" id="a5">
-            <p>Curabitur dignissim quis nunc vitae laoreet. Etiam ut mattis leo, vel fermentum tellus. Sed sagittis rhoncus venenatis. Quisque commodo consectetur faucibus. Aenean eget ultricies justo.</p>
-        </div>
-        <div class="tab-pane fade" id="a6">
-            <p>Curabitur dignissim quis nunc vitae laoreet. Etiam ut mattis leo, vel fermentum tellus. Sed sagittis rhoncus venenatis. Quisque commodo consectetur faucibus. Aenean eget ultricies justo.</p>
-        </div>
-    </div>
+    <br>
+    <br>
+        <div class="container">
+        <form action="#" th:action="@{/account/adminform}" th:object="${user}" method="post">
+                    <input type="hidden" th:field="*{id}">
+                    <div class="form-group">
+                        <label for="username">username</label>
+                        <input type="text" class="form-control" id="username" th:field="*{username}">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">password</label>
+                        <input type="text" class="form-control" id="password" th:field="*{password}">
+                    </div>
+                    <!--<div class="form-group">
 
+                        <input type="text" class="form-control" >
+                    </div>-->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <label for="enabled">enabled &nbsp</label>
+                                <input type="checkbox" id="enabled" th:field="*{enabled}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <a type="button" class="btn btn-primary" th:href="@{/account/admin}">취소</a>
+                        <button type="submit" class="btn btn-primary">확인</button>
+                    </div>
+        </form>
+    </div>
 </main>
 
 <!-- Optional JavaScript; choose one of the two! -->

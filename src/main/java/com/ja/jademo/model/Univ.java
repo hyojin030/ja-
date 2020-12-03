@@ -6,8 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name="info_mid")
-public class Middle {
+@Table(name="info_univ")
+public class Univ {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,4 +22,3 @@ public class Middle {
     private String inout2;
     private String year;
 }
-

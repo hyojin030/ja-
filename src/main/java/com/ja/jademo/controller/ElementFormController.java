@@ -12,7 +12,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/education")
-public class FormController {
+public class ElementFormController {
     @Autowired
     private ElementRepository elementRepository;
 
@@ -33,20 +33,4 @@ public class FormController {
         return "redirect:/education/elementary";
     }
 
-/*    @GetMapping("/form")
-    public String form(Model model, @RequestParam(required=false) Long id){
-        if (id == null) {
-            model.addAttribute("element", new Element());
-        } else {
-            Element element = elementRepository.findById(id).orElse(null);
-            model.addAttribute("element", element);
-        }
-        return "education/form";
-    }
-
-    @PostMapping("/form")
-    public String greetingSubmit(@ModelAttribute Element element){
-        elementRepository.save(element);
-        return "redirect:/education/education";
-    }*/
 }

@@ -3,11 +3,10 @@ package com.ja.jademo.model;
 import lombok.Data;
 
 import javax.persistence.*;
-
 @Entity
 @Data
-@Table(name="info_mid")
-public class Middle {
+@Table(name="info_high")
+public class High {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,4 +21,3 @@ public class Middle {
     private String inout2;
     private String year;
 }
-

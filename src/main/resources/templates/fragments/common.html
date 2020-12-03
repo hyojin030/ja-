@@ -38,8 +38,11 @@
             <li class="nav-item" th:classappend="${menu} == 'payment'? 'active'">
                 <a class="nav-link" href="#" th:href="@{/payment/payment_list}">선수금<span class="sr-only" th:if="${menu} == 'payment'">(current)</span></a>
             </li>
-            <li class="nav-item" th:classappend="${menu} == 'education'?'education'">
+            <li class="nav-item" th:classappend="${menu} == 'education'?'active'">
                 <a class="nav-link" href="#" th:href="@{/education/education}">교육실적 관리<span class="sr-only" th:if="${menu} == 'education'">(current)</span></a>
+            </li>
+            <<li class="nav-item" th:classappend="${menu} == 'admin'?'active'">
+                <a class="nav-link" href="#" th:href="@{/account/admin}">관리자 페이지<span class="sr-only" th:if="${menu} == 'admin'">(current)</span></a>
             </li>
         </ul>
 

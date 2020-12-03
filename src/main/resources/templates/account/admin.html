@@ -44,45 +44,28 @@
 </nav>
 </header>
 <main role="main" class="container">
-    <br><br><br>
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#a1">유아</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/education/elementary}">초등</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/education/middle}">중등</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/education/high}">고등</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/education/univ}">대학</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#a6">성인</a>
-        </li>
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane fade show active" id="a1">
-        </div>
-        <div class="tab-pane fade" >
-        </div>
-        <div class="tab-pane fade">
-        </div>
-        <div class="tab-pane fade" id="a4">
-            <p>Curabitur dignissim quis nunc vitae laoreet. Etiam ut mattis leo, vel fermentum tellus. Sed sagittis rhoncus venenatis. Quisque commodo consectetur faucibus. Aenean eget ultricies justo.</p>
-        </div>
-        <div class="tab-pane fade" id="a5">
-            <p>Curabitur dignissim quis nunc vitae laoreet. Etiam ut mattis leo, vel fermentum tellus. Sed sagittis rhoncus venenatis. Quisque commodo consectetur faucibus. Aenean eget ultricies justo.</p>
-        </div>
-        <div class="tab-pane fade" id="a6">
-            <p>Curabitur dignissim quis nunc vitae laoreet. Etiam ut mattis leo, vel fermentum tellus. Sed sagittis rhoncus venenatis. Quisque commodo consectetur faucibus. Aenean eget ultricies justo.</p>
-        </div>
-    </div>
+    <br>
 
+    <form>
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">username</th>
+            <th scope="col">password</th>
+            <th scope="col">enabled</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user: ${users}">
+            <td th:text="${user.id}">id</td>
+            <td> <a th:text="${user.username}" th:href="@{/account/adminform(id=${user.id})}">username</a></td>
+            <td> <a th:text="${user.password}" th:href="@{/account/adminform(id=${user.id})}">password</a></td>
+            <td> <a th:text="${user.enabled}" th:href="@{/account/adminform(id=${user.id})}">enabled</a></td>
+        </tr>
+        </tbody>
+    </table>
+    </form>
 </main>
 
 <!-- Optional JavaScript; choose one of the two! -->

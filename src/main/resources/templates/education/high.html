@@ -52,13 +52,13 @@
             <a class="nav-link " th:href="@{/education/elementary}">초등</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link show active"  th:href="@{/education/middle}">중등</a>
+            <a class="nav-link"  th:href="@{/education/middle}">중등</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/education/high}">고등</a>
+            <a class="nav-link show active" th:href="@{/education/high}">고등</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/education/univ}">대학</a>
+            <a class="nav-link " th:href="@{/education/univ}">대학</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#a6">성인</a>
@@ -69,9 +69,9 @@
         </div>
         <div class="tab-pane fade ">
         </div>
-        <div class="tab-pane fade active" >
-        </div>
         <div class="tab-pane fade" >
+        </div>
+        <div class="tab-pane fade active" >
         </div>
         <div class="tab-pane fade" >
         </div>
@@ -80,7 +80,7 @@
     </div>
     <div class="table-responsive">
         <br>
-        <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/education/middle}">
+        <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/education/high}">
             <div class="form-group mx-sm-3 mb-2">
                 <label for="searchtext" class="sr-only">검색</label>
                 <input type="text" class="form-control" id="searchtext" name="searchtext"
@@ -88,54 +88,54 @@
             </div>
             <button type="submit" class="btn btn-primary">검색</button>
         </form>
-        <table class="table table-condensed">
-            <thead>
-            <tr>
-                <th scope="col">년도</th>
-                <th scope="col">지역</th>
-                <th scope="col">학교명</th>
-                <th scope="col">사업명</th>
-                <th scope="col">기관별 총 학급수</th>
-                <th scope="col">기관별 총 학생수</th>
-                <th scope="col">기관별 총 교육시간</th>
-                <th scope="col">기관별 총 봉사자수</th>
-                <th scope="col">진행학기</th>
-                <th scope="col">안/밖</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="middle : ${middles}">
-                <td th:text="${middle.year}">year</td>
-                <td> <a th:text="${middle.region}" th:href="@{/education/form(id=${middle.id})}">지역</a></td>
-                <td th:text="${middle.orz}">학교명</td>
-                <td th:text="${middle.work}">사업명</td>
-                <td th:text="${middle.class_num}">학급수</td>
-                <td th:text="${middle.student}">학생수</td>
-                <td th:text="${middle.edu_hour}">교육시간</td>
-                <td th:text="${middle.volunteer}">봉사자수</td>
-                <td th:text="${middle.semester}">진행학기</td>
-                <td th:text="${middle.inout2}">안/밖</td>
-            </tr>
-            </tbody>
-        </table>
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th scope="col">년도</th>
+                    <th scope="col">지역</th>
+                    <th scope="col">학교명</th>
+                    <th scope="col">사업명</th>
+                    <th scope="col">기관별 총 학급수</th>
+                    <th scope="col">기관별 총 학생수</th>
+                    <th scope="col">기관별 총 교육시간</th>
+                    <th scope="col">기관별 총 봉사자수</th>
+                    <th scope="col">진행학기</th>
+                    <th scope="col">안/밖</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="high : ${highs}">
+                    <td th:text="${high.year}">year</td>
+                    <td> <a th:text="${high.region}" th:href="@{/education/form(id=${high.id})}">지역</a></td>
+                    <td th:text="${high.orz}">학교명</td>
+                    <td th:text="${high.work}">사업명</td>
+                    <td th:text="${high.class_num}">학급수</td>
+                    <td th:text="${high.student}">학생수</td>
+                    <td th:text="${high.edu_hour}">교육시간</td>
+                    <td th:text="${high.volunteer}">봉사자수</td>
+                    <td th:text="${high.semester}">진행학기</td>
+                    <td th:text="${high.inout2}">안/밖</td>
+                </tr>
+                </tbody>
+            </table>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-                <li class="page-item" th:classappend="${1 == middles.pageable.pageNumber + 1} ? 'disabled'">
+                <li class="page-item" th:classappend="${1 == highs.pageable.pageNumber + 1} ? 'disabled'">
                     <a class="page-link" href="#"
-                       th:href="@{/eduacation/middle(page=${middles.pageable.pageNumber - 1},searchtext=${param.searchtext})}"
+                       th:href="@{/eduacation/high(page=${highs.pageable.pageNumber - 1},searchtext=${param.searchtext})}"
                        tabindex="-1" aria-disabled="true">Previous</a>
                 </li>
-                <li class="page-item" th:classappend="${i == middles.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
-                    <a class="page-link" href="#" th:href="@{/education/middle(page=${i - 1},searchText=${param.searchtext})}" th:text="${i}">1</a>
+                <li class="page-item" th:classappend="${i == highs.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                    <a class="page-link" href="#" th:href="@{/education/high(page=${i - 1},searchText=${param.searchtext})}" th:text="${i}">1</a>
                 </li>
-                <li class="page-item" th:classappend="${middles.totalPages == middles.pageable.pageNumber + 1} ? 'disabled'">
-                    <a class="page-link" href="#" th:href="@{/education/middle(page=${middles.pageable.pageNumber + 1},searchtext=${param.searchtext})}">Next</a>
+                <li class="page-item" th:classappend="${highs.totalPages == highs.pageable.pageNumber + 1} ? 'disabled'">
+                    <a class="page-link" href="#" th:href="@{/education/high(page=${highs.pageable.pageNumber + 1},searchtext=${param.searchtext})}">Next</a>
                 </li>
             </ul>
         </nav>
     </div>
     <div class="container">
-        <form class="form-inline" action="#" th:action="@{/education/middle}" th:object="${middle}" method="post">
+        <form class="form-inline" action="#" th:action="@{/education/high}" th:object="${high}" method="post">
             <input type="hidden" th:field="*{id}">
             <div class="form-group">
                 <label class="sr-only" for="year">년도</label>
@@ -177,7 +177,7 @@
                 <label class="sr-only" for="inout2">안/밖</label>
                 <input type="text" class="form-control" id="inout2" th:field="*{inout2}" placeholder="안/밖"style="width:80px;">
             </div> &nbsp;
-            <button type="submit" class="btn btn-primary" th:href="@{/education/middle}">추가</button>
+            <button type="submit" class="btn btn-primary" th:href="@{/education/high}">추가</button>
         </form>
     </div>
 
