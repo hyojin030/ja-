@@ -12,7 +12,6 @@
 
     <title th:text="${title}"></title>
 </head>
-
 <body>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" th:replace="fragments/common :: menu('vehicle')">
     <a class="navbar-brand" href="#">JA Korea</a>
@@ -47,10 +46,10 @@
     <br><br><br>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#a1">유아</a>
+            <a class="nav-link " data-toggle="tab" href="#a1">유아</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/education/elementary}">초등</a>
+            <a class="nav-link active" th:href="@{/education/elementary}">초등</a>
         </li>
         <li class="nav-item">
             <a class="nav-link"  th:href="@{/education/middle}">중등</a>
@@ -69,85 +68,6 @@
         <div class="tab-pane fade " id="a1">
         </div>
         <div class="tab-pane fade show active">
-            <div class="table-responsive">
-                <foam>
-                    <div class="text-right">
-                        <a type="button" class="btn btn-primary" th:href="@{/education/form}">추가</a>
-                    </div>
-                    <table class="table table-condensed">
-                        <thead>
-                        <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">지역</th>
-                            <th scope="col">학교명</th>
-                            <th scope="col">사업명</th>
-                            <th scope="col">기관별 총 학급수</th>
-                            <th scope="col">기관별 총 학생수</th>
-                            <th scope="col">기관별 총 교육시간</th>
-                            <th scope="col">기관별 총 봉사자수</th>
-                            <th scope="col">진행학기</th>
-                            <th scope="col">안/밖</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="element : ${elements}">
-                            <td th:text="${element.id}">id</td>
-                            <td> <a th:text="${element.region}" th:href="@{/education/form(id=${element.id})}">지역</a></td>
-                            <td th:text="${element.orz}">학교명</td>
-                            <td th:text="${element.work}">사업명</td>
-                            <td th:text="${element.class_num}">학급수</td>
-                            <td th:text="${element.student}">학생수</td>
-                            <td th:text="${element.edu_hour}">교육시간</td>
-                            <td th:text="${element.volunteer}">봉사자수</td>
-                            <td th:text="${element.semester}">진행학기</td>
-                            <td th:text="${element.inout2}">안/밖</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </foam>
-            </div>
-            <div class="container">
-                <form class="form-inline"action="#" th:action="@{/education/elementary}" th:object="${element}" method="post">
-                    <input type="hidden" th:field="*{id}" width="20">
-                    <div class="form-group" >
-                        <label class="sr-only" for="region">지역</label>
-                        <input type="text" class="form-control" id="region" th:field="*{region}" placeholder="지역">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="orz">학교명</label>
-                        <input type="text" class="form-control" id="orz" th:field="*{orz}" placeholder="학교">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="work">사업명</label>
-                        <input type="text" class="form-control" id="work" th:field="*{work}" placeholder="사업명">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="class_num">기관별 총 학급수</label>
-                        <input type="number" class="form-control" id="class_num" th:field="*{class_num}" placeholder="학급수">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="student">기관별 총 학생수</label>
-                        <input type="number" class="form-control" id="student" th:field="*{student}" placeholder="학생수">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="edu_hour">기관별 총 교육시간</label>
-                        <input type="number" class="form-control" id="edu_hour" th:field="*{edu_hour}" placeholder="교육시간">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="volunteer">기관별 총 봉사자수</label>
-                        <input type="number" class="form-control" id="volunteer" th:field="*{volunteer}" placeholder="봉사자수">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="semester">진행학기</label>
-                        <input type="number" class="form-control" id="semester" th:field="*{semester}" placeholder="진행학기">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="inout2">안/밖</label>
-                        <input type="text" class="form-control" id="inout2" th:field="*{inout2}" placeholder="안/밖">
-                    </div>
-                    <button type="submit" class="btn btn-primary" th:href="@{/education/elementary}">추가</button>
-                </form>
-            </div>
         </div>
         <div class="tab-pane fade" >
             <p>중등 데이터</p>
@@ -161,6 +81,108 @@
         <div class="tab-pane fade" id="a6">
             <p>Curabitur dignissim quis nunc vitae laoreet. Etiam ut mattis leo, vel fermentum tellus. Sed sagittis rhoncus venenatis. Quisque commodo consectetur faucibus. Aenean eget ultricies justo.</p>
         </div>
+    </div>
+    <div class="table-responsive">
+        <br>
+        <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/education/elementary}">
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="searchtext" class="sr-only">검색</label>
+                <input type="text" class="form-control" id="searchtext" name="searchtext"
+                       th:value="${param.searchtext}">
+            </div>
+            <button type="submit" class="btn btn-primary">검색</button>
+        </form>
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th scope="col">년도</th>
+                    <th scope="col">지역</th>
+                    <th scope="col">학교명</th>
+                    <th scope="col">사업명</th>
+                    <th scope="col">기관별 총 학급수</th>
+                    <th scope="col">기관별 총 학생수</th>
+                    <th scope="col">기관별 총 교육시간</th>
+                    <th scope="col">기관별 총 봉사자수</th>
+                    <th scope="col">진행학기</th>
+                    <th scope="col">안/밖</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="element : ${elements}">
+                    <td th:text="${element.year}">year</td>
+                    <td> <a th:text="${element.region}" th:href="@{/education/form(id=${element.id})}">지역</a></td>
+                    <td th:text="${element.orz}">학교명</td>
+                    <td th:text="${element.work}">사업명</td>
+                    <td th:text="${element.class_num}">학급수</td>
+                    <td th:text="${element.student}">학생수</td>
+                    <td th:text="${element.edu_hour}">교육시간</td>
+                    <td th:text="${element.volunteer}">봉사자수</td>
+                    <td th:text="${element.semester}">진행학기</td>
+                    <td th:text="${element.inout2}">안/밖</td>
+                </tr>
+                </tbody>
+            </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:classappend="${1 == elements.pageable.pageNumber + 1} ? 'disabled'">
+                    <a class="page-link" href="#"
+                       th:href="@{/eduacation/elementary(page=${elements.pageable.pageNumber - 1},searchtext=${param.searchtext})}"
+                       tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item" th:classappend="${i == elements.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                    <a class="page-link" href="#" th:href="@{/education/elementary(page=${i - 1},searchText=${param.searchtext})}" th:text="${i}">1</a>
+                </li>
+                <li class="page-item" th:classappend="${elements.totalPages == elements.pageable.pageNumber + 1} ? 'disabled'">
+                    <a class="page-link" href="#" th:href="@{/education/elementary(page=${elements.pageable.pageNumber + 1},searchtext=${param.searchtext})}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <form class="form-inline" action="#" th:action="@{/education/elementary}" th:object="${element}" method="post">
+            <input type="hidden" th:field="*{id}">
+            <div class="form-group">
+                <label class="sr-only" for="year">년도</label>
+                <input type="text" class="form-control" id="year" th:field="*{year}" placeholder="2020" style="width:60px;">
+            </div> &nbsp;
+            <div class="form-group" >
+                <label class="sr-only" for="region">지역</label>
+                <input type="text" class="form-control" id="region" th:field="*{region}" placeholder="지역"style="width:60px;">
+            </div> &nbsp;
+            <div class="form-group">
+                <label class="sr-only" for="orz">학교명</label>
+                <input type="text" class="form-control" id="orz" th:field="*{orz}" placeholder="학교명"style="width:110px;">
+            </div> &nbsp;
+            <div class="form-group">
+                <label class="sr-only" for="work">사업명</label>
+                <input type="text" class="form-control" id="work" th:field="*{work}" placeholder="사업명"style="width:120px;">
+            </div> &nbsp;
+            <div class="form-group">
+                <label class="sr-only" for="class_num">기관별 총 학급수</label>
+                <input type="number" class="form-control" id="class_num" th:field="*{class_num}" placeholder="학급수"style="width:100px;">
+            </div> &nbsp;
+            <div class="form-group">
+                <label class="sr-only" for="student">기관별 총 학생수</label>
+                <input type="number" class="form-control" id="student" th:field="*{student}" placeholder="학생수"style="width:120px;">
+            </div> &nbsp;
+            <div class="form-group">
+                <label class="sr-only" for="edu_hour">기관별 총 교육시간</label>
+                <input type="number" class="form-control" id="edu_hour" th:field="*{edu_hour}" placeholder="교육시간"style="width:130px;">
+            </div> &nbsp;
+            <div class="form-group">
+                <label class="sr-only" for="volunteer">기관별 총 봉사자수</label>
+                <input type="number" class="form-control" id="volunteer" th:field="*{volunteer}" placeholder="봉사자수"style="width:130px;">
+            </div> &nbsp;
+            <div class="form-group">
+                <label class="sr-only" for="semester">진행학기</label>
+                <input type="number" class="form-control" id="semester" th:field="*{semester}" placeholder="진행학기"style="width:60px;">
+            </div> &nbsp;
+            <div class="form-group">
+                <label class="sr-only" for="inout2">안/밖</label>
+                <input type="text" class="form-control" id="inout2" th:field="*{inout2}" placeholder="안/밖"style="width:80px;">
+            </div> &nbsp;
+            <button type="submit" class="btn btn-primary" th:href="@{/education/elementary}">추가</button>
+        </form>
     </div>
 
 </main>

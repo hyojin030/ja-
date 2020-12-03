@@ -20,5 +20,5 @@ public class Element {
     private int volunteer;
     private int semester;
     private String inout2;
-
+    private String year;
 }

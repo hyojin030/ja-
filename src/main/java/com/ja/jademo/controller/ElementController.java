@@ -1,8 +1,12 @@
 package com.ja.jademo.controller;
 
 import com.ja.jademo.model.Element;
+import com.ja.jademo.model.Middle;
 import com.ja.jademo.repository.ElementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +20,12 @@ public class ElementController {
     private ElementRepository elementRepository;
 
     @GetMapping("/elementary")
-    public String education(Model model, @RequestParam(required=false) Long id){
-        List<Element> elements = elementRepository.findAll();
+    public String elementary(Model model, @RequestParam(required=false) Long id, @PageableDefault(size=10) Pageable pageable, @RequestParam(required = false, defaultValue = "") String searchtext){
+        Page<Element> elements = elementRepository.findByYearContainingOrRegionContainingOrOrzContainingOrWorkContaining(searchtext, searchtext, searchtext, searchtext, pageable);
+        int startPage=Math.max(1, elements.getPageable().getPageNumber()-4);
+        int endPage=Math.min(elements.getTotalPages(), elements.getPageable().getPageNumber()+4);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
         model.addAttribute("elements", elements);
         if (id == null) {
             model.addAttribute("element", new Element());
@@ -34,20 +42,6 @@ public class ElementController {
         return "redirect:/education/elementary";
     }
 
-/*    @GetMapping("/form")
-    public String form(Model model, @RequestParam(required=false) Long id){
-        if (id == null) {
-            model.addAttribute("element", new Element());
-        } else {
-            Element element = elementRepository.findById(id).orElse(null);
-            model.addAttribute("element", element);
-        }
-        return "education/form";
-    }
 
-    @PostMapping("/form")
-    public String greetingSubmit(@ModelAttribute Element element){
-        elementRepository.save(element);
-        return "redirect:/education/education";
-    }*/
+
 }
