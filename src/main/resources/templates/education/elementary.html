@@ -116,6 +116,46 @@
                     <td th:text="${element.semester}">진행학기</td>
                     <td th:text="${element.inout2}">안/밖</td>
                 </tr>
+                <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        $('table thead th').each(function(i) {
+                            calculateColumn(i);
+                        });
+                    });
+
+                    function calculateColumn(index) {
+                        var total = 0;
+                        $('table tr').each(function() {
+                            var value = parseInt($('td', this).eq(index).text());
+
+                            if (!isNaN(value)) {
+                                total += value;
+                            }
+                        });
+                        if(total == 0){
+                            $('table tfoot td').eq(index).text(' ');
+                        }
+                        else{
+                            $('table tfoot td').eq(index).text('합계: ' + total);
+                        }
+                    }
+                </script>
+                <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tfoot>
+
                 </tbody>
             </table>
         <nav aria-label="Page navigation example">

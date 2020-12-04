@@ -52,27 +52,6 @@
         <div class="embed-responsive embed-responsive-16by9">
             <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRnEe2px1NYJKRKpcBk6gcL0o8UAoGIIHd4WgUP5Z_4KJfE-4QWDDlSPs3BqLTYNu1iLpKwmBhSopPH/pubhtml?widget=true&amp;headers=false"></iframe>        </div>
 
-        <div>총건수 : <span th:text="${#lists.size(vehicles)}"></span></div>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">번호</th>
-                <th scope="col">이름</th>
-                <th scope="col">사용자</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="vehicle : ${vehicles}">
-                <th th:text="${vehicle.id}">1</th>
-                <td><a th:text="${vehicle.name}" th:href="@{/vehicle/form(id=${vehicle.id})}" ></a></td>
-                <td th:text="${vehicle.driver}"></td>
-            </tr>
-            </tbody>
-        </table>
-        <div>
-        <p class="text-right">
-            <a type="button" class="btn btn-dark" th:href="@{/vehicle/form}">작성</a></p>
-        </div>
     </div>
 </main>
 
